@@ -32,28 +32,33 @@ const ContactUs = () => {
     };
 
     try {
-      const response = await fetch("https://carebridger.runasp.net/Contact/submitcontact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      // إرسال البريد باستخدام mailto (بدون حاجة لخادم)
+      const mailtoLink = `mailto:office@carebridgetherapeutics.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(
+        `Name: ${data.first_name} ${data.last_name}\n` +
+        `Company: ${data.company_name}\n` +
+        `Email: ${data.work_email}\n` +
+        `Phone: ${data.phone}\n` +
+        `Message: ${data.message}`
+      )}`;
 
-      if (response.ok) {
-        setPopupData(data);
-        setPopupVisible(true);
-        setTimeout(() => setPopupVisible(false), 5000);
+      // فتح عميل البريد الافتراضي
+      window.location.href = mailtoLink;
 
-        if (form) {
-          form.reset();
-        }
-      } else {
-        console.error("Failed to send data:", await response.text());
+      // عرض نافذة التأكيد (كما في التصميم الأصلي)
+      setPopupData(data);
+      setPopupVisible(true);
+      setTimeout(() => setPopupVisible(false), 5000);
+
+      if (form) {
+        form.reset();
       }
+
     } catch (error) {
       console.error("Error sending data:", error);
     }
   };
 
+  // باقي الكود يبقى كما هو بدون أي تغيير
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
