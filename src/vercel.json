@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/api/contact",
+      "destination": "http://carebridger.runasp.net/Contact/submitcontact",
+      "permanent": true
+    }
+  ]
+}
