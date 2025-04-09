@@ -104,10 +104,10 @@ const handleCheckAvailability = () => {
           </p>
           <p className="flex items-center text-sm sm:text-base">
             <a
-              href="mailto:admin@carebridgerehab.com"
+              href="mailto:office@carebridgetherapeutics.com"
               className="text-blue-600 font-bold hover:underline"
             >
-              admin@carebridgerehab.com
+              office@carebridgetherapeutics.com
             </a>
           </p>
         </div>
